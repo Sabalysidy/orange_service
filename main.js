@@ -1,4 +1,4 @@
-const montantTotal = 102470;
+const montantTotal = 10262470;
 
 function menu() {
   alert("Choisissez une option :\n" +
@@ -6,7 +6,7 @@ function menu() {
     "2. Transfert d'argent\n" +
     "3. Paiement de facture\n" +
     "4. Achats de crédit\n" +
-    "5. quitter");
+    "5. Quitter");
 }
 
 function isNumber(value) {
@@ -15,6 +15,8 @@ function isNumber(value) {
 
 function balance() {
   alert(`Bienvenu dans le service orange. Votre solde actuel est : ${montantTotal} FCFA`);
+
+  attendMenu();
 }
 
 function transfere() {
@@ -30,6 +32,8 @@ function transfere() {
   }
 
   alert(`Vous avez transféré un montant de ${montantTransfere} FCFA au ${phone}. Votre nouveau solde : ${montantTotal} FCFA Ref:MP2566278.62822.C8282Merci.OFMS`);
+
+  attendMenu();
 
   montantTotal -= parseInt(montantTransfere);
 }
@@ -57,6 +61,8 @@ function payer() {
       alert("Veillez choisir une option valide s'il vous plaît !");
       payer();
   }
+
+  attendMenu();
 }
 
 function credit() {
@@ -73,33 +79,38 @@ function credit() {
 
   alert(`Vous avez acheté ${montantCredit} FCFA de crédit pour ${phoneNumber}. Votre nouveau solde : ${montantTotal} FCFA Ref:MP2566278.628282.C8282Merci.OFMS`);
 
-  montantTotal -= parseInt(montantCredit);
+  attendMenu();
 
+  montantTotal -= parseInt(montantCredit);
 }
 
 function quitter() {
   alert("Orange vous remercie de votre fidélité, à bientôt !");
 }
 
-menu();
+function attendMenu() {
+  menu();
+  let choice = prompt("Choix : ");
 
-let choice = prompt("Choix : ");
-switch (choice) {
-  case '1':
-    balance();
-    break;
-  case '2':
-    transfere();
-    break;
-  case '3':
-    payer();
-    break;
-  case '4':
-    credit();
-    break;
-  case '5':
-    quitter();
-    break;
-  default:
-    alert("Veillez choisir une option valide s'il vous plaît !");
+  switch (choice) {
+    case '1':
+      balance();
+      break;
+    case '2':
+      transfere();
+      break;
+    case '3':
+      payer();
+      break;
+    case '4':
+      credit();
+      break;
+    case '5':
+      quitter();
+      break;
+    default:
+      alert("Veuillez choisir une option valide s'il vous plaît !");
+      attendMenu();
+  }
 }
+attendMenu();
